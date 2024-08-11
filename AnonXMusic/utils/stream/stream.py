@@ -5,7 +5,7 @@ from typing import Union
 from pyrogram.types import InlineKeyboardMarkup
 
 import config
-from AnonXMusic import Carbon, YouTube, app
+from AnonXMusic import Carbon, YouTube, app, YTB
 from AnonXMusic.core.call import Anony
 from AnonXMusic.misc import db
 from AnonXMusic.utils.database import add_active_video_chat, is_active_chat
@@ -74,7 +74,7 @@ async def stream(
                     db[chat_id] = []
                 status = True if video else None
                 try:
-                    file_path, direct = await YouTube.download(
+                    file_path, direct = await YTB.download(
                         vidid, mystic, video=status, videoid=True
                     )
                 except:
@@ -138,7 +138,7 @@ async def stream(
         thumbnail = result["thumb"]
         status = True if video else None
         try:
-            file_path, direct = await YouTube.download(
+            file_path, direct = await YTB.download(
                 vidid, mystic, videoid=True, video=status
             )
         except:
